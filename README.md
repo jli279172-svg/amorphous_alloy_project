@@ -98,3 +98,28 @@ See `docs/POTCAR_GUIDE.md` (English) or `docs/POTCAR_GUIDE_CN.md` (中文) for d
 
 See `docs/MELT_QUENCH_GUIDE.md` for detailed instructions.
 
+## Installation of Third-Party Tools
+
+### VASPKIT
+
+VASPKIT is required for some POTCAR generation features. It is not included in this repository due to size constraints.
+
+**Installation options**:
+
+1. **Using the provided script** (recommended):
+   ```bash
+   bash scripts/install_vaspkit.sh
+   ```
+
+2. **Manual installation**:
+   - Download from [vaspkit official website](https://vaspkit.com/)
+   - Follow the installation guide in `docs/VASPKIT_INSTALL_GUIDE.md`
+   - Or use the quick install guide: `docs/VASPKIT_POTCAR_GUIDE_CN.md`
+
+3. **Using vaspkit for POTCAR generation**:
+   ```bash
+   python3 scripts/prepare_potcar_vaspkit.py
+   ```
+
+See `docs/VASPKIT_INSTALL_GUIDE.md` for detailed installation instructions.
+
