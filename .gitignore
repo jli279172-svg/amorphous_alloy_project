@@ -53,9 +53,9 @@ WAVEDER
 *~
 temp_vaspkit/
 
-# Large binary files (optional - uncomment if you want to exclude)
-# tools/vaspkit.1.5.0/
-# VASPKIT_manual/*.pdf
+# Large binary files - exclude third-party tools
+tools/vaspkit.1.5.0/
+VASPKIT_manual/
 
 # Output files (optional - uncomment if you want to exclude generated files)
 # outputs/melt_quench_simulation/*.out
