@@ -1,0 +1,70 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# VASP output files
+*.out
+*.log
+*.err
+CHG*
+WAVECAR
+EIGENVAL
+DOSCAR
+IBZKPT
+KPOINTS
+OUTCAR
+CONTCAR
+XDATCAR
+vasprun.xml
+OSZICAR
+PCDAT
+ELFCAR
+LOCPOT
+AECCAR*
+WAVEDER
+*.eig
+*.dat
+*.xvg
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+temp_vaspkit/
+
+# Large binary files (optional - uncomment if you want to exclude)
+# tools/vaspkit.1.5.0/
+# VASPKIT_manual/*.pdf
+
+# Output files (optional - uncomment if you want to exclude generated files)
+# outputs/melt_quench_simulation/*.out
+# outputs/melt_quench_simulation/*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+

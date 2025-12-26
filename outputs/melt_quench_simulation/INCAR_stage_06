@@ -1,0 +1,44 @@
+# ============================================================
+# VASP INCAR for Melt-Quench AIMD - Stage 6
+# Temperature: 500K -> 300K
+# ============================================================
+
+SYSTEM = Fe80Si10B10 Melt-Quench Stage 6 (500K->300K)
+
+# Basic Settings
+PREC = Fast
+ALGO = Fast
+LREAL = Auto
+ENCUT = 400
+EDIFF = 1E-4
+
+# Molecular Dynamics
+IBRION = 0
+NSW = 6666
+POTIM = 0.0015
+
+# Temperature Control (NVT - Nose-Hoover)
+MDALGO = 1
+SMASS = 3
+TEBEG = 500
+TEEND = 300
+
+# Output Settings
+LWAVE = .FALSE.
+LCHARG = .FALSE.
+NBLOCK = 1
+KBLOCK = 1
+NWRITE = 0
+
+# Electronic Structure
+ISMEAR = 0
+SIGMA = 0.2
+NELM = 60
+NELMIN = 4
+
+# MD Settings
+ISIF = 2
+
+# Restart
+ISTART = 1
+ICHARG = 1

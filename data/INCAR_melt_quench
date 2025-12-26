@@ -1,0 +1,95 @@
+# ============================================================
+# VASP INCAR for Melt-Quench AIMD Simulation
+# Fe80Si10B10 Amorphous Alloy
+# ============================================================
+
+# System Information
+SYSTEM = Fe80Si10B10 Melt-Quench AIMD
+
+# ============================================================
+# BASIC SETTINGS
+# ============================================================
+PREC = Fast              # Fast precision for MD efficiency
+ALGO = Fast              # Fast algorithm for MD
+LREAL = Auto             # Auto real-space projection for efficiency
+ENCUT = 400              # Plane wave cutoff (eV) - adjust based on POTCAR
+EDIFF = 1E-4             # Energy convergence (relaxed for MD)
+
+# ============================================================
+# MOLECULAR DYNAMICS SETTINGS
+# ============================================================
+IBRION = 0               # MD mode
+NSW = 10000              # Number of MD steps (adjust as needed)
+POTIM = 0.0015           # Time step in ps (1.5 fs = 0.0015 ps)
+                         # Recommended: 1-2 fs for Fe/Si/B systems
+                         # 1.5 fs is a good balance between stability and efficiency
+
+# ============================================================
+# TEMPERATURE CONTROL (NVT ENSEMBLE - NOSE-HOOVER)
+# ============================================================
+MDALGO = 1               # Nose-Hoover thermostat (NVT ensemble)
+SMASS = 3                # Nose mass parameter (default, can be adjusted)
+TEBEG = 2500             # Starting temperature (K) - MELTING STAGE
+TEEND = 300              # Final temperature (K) - QUENCHED STATE
+
+# IMPORTANT: For cooling simulation, you need to run multiple stages:
+# Stage 1: TEBEG=2500, TEEND=2500 (equilibration at high T)
+# Stage 2-N: Gradually decrease TEBEG and TEEND in steps
+# Example cooling protocol:
+#   Stage 1: TEBEG=2500, TEEND=2500 (equilibrate 5-10 ps)
+#   Stage 2: TEBEG=2500, TEEND=2000 (cool 10 ps)
+#   Stage 3: TEBEG=2000, TEEND=1500 (cool 10 ps)
+#   Stage 4: TEBEG=1500, TEEND=1000 (cool 10 ps)
+#   Stage 5: TEBEG=1000, TEEND=500  (cool 10 ps)
+#   Stage 6: TEBEG=500,  TEEND=300  (cool 10 ps)
+#   Stage 7: TEBEG=300,  TEEND=300  (equilibrate 5-10 ps)
+
+# ============================================================
+# OUTPUT SETTINGS
+# ============================================================
+LWAVE = .FALSE.          # Do NOT write WAVECAR (saves disk space)
+LCHARG = .FALSE.         # Do NOT write CHGCAR (saves disk space)
+NBLOCK = 1               # Write every NBLOCK steps to XDATCAR
+KBLOCK = 1               # Write every KBLOCK steps to MD file
+                         # Set to 1 to write positions frequently
+
+# Trajectory output
+NWRITE = 0               # Verbosity (0=minimal, 1=normal, 2=detailed)
+
+# ============================================================
+# ELECTRONIC STRUCTURE
+# ============================================================
+ISMEAR = 0               # Gaussian smearing (recommended for metals)
+SIGMA = 0.2              # Smearing width (eV)
+NELM = 60                # Max electronic steps
+NELMIN = 4               # Min electronic steps
+
+# ============================================================
+# K-POINT SETTINGS
+# ============================================================
+# Use Gamma point only for MD (sufficient for large supercells)
+# Set in KPOINTS file: 1x1x1 Gamma point
+
+# ============================================================
+# ADDITIONAL MD SETTINGS
+# ============================================================
+ISIF = 2                 # Only relax ions, keep cell fixed (NVT)
+                         # For NPT, use ISIF=3 with pressure control
+
+# ============================================================
+# RESTART SETTINGS
+# ============================================================
+ISTART = 1               # Read WAVECAR if available (but we set LWAVE=.FALSE.)
+ICHARG = 1               # Read CHGCAR if available (but we set LCHARG=.FALSE.)
+
+# ============================================================
+# NOTES:
+# ============================================================
+# 1. This INCAR is optimized for efficiency in MD simulations
+# 2. For production runs, consider:
+#    - Testing with smaller systems first
+#    - Adjusting POTIM based on stability (check for energy drift)
+#    - Using multiple cooling stages for better glass formation
+# 3. Monitor temperature, energy, and pressure during simulation
+# 4. Check XDATCAR for trajectory and CONTCAR for final structure
+
