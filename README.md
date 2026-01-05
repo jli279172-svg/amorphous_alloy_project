@@ -122,4 +122,3 @@ VASPKIT is required for some POTCAR generation features. It is not included in t
    ```
 
 See `docs/VASPKIT_INSTALL_GUIDE.md` for detailed installation instructions.
-
